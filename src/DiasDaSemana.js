@@ -4,7 +4,7 @@ import React from "react";
 export default function DiasDaSemana({ days }) {
   const dias = ["D", "S", "T", "Q", "Q", "S", "S"];
   function verify(index) {
-    return days.includes(index+1);
+    return days.includes(index);
   }
   const componentDay = dias.map((dia, index) => (
     <Day

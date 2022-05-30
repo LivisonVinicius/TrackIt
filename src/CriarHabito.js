@@ -20,24 +20,28 @@ export default function CriarHabito(props) {
   }
   function submitData(event) {
     event.preventDefault();
-    const objPost = {
-      name: habit,
-      days: chosen,
-    };
-    const promise = axios.post(
-      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
-      objPost,
-      { headers: { Authorization: `Bearer ${userD.token}` } }
-    );
-    promise.then(() => {
-      !props.create ? props.setCreate(true) : props.setCreate(false);
-      setHabit("");
-      setChosen([]);
-      props.GetHabits()
-    });
-    promise.catch((resp) => {
-      alert(resp.response.data.message);
-    });
+    if(chosen.length!==0){
+      const objPost = {
+        name: habit,
+        days: chosen,
+      };
+      const promise = axios.post(
+        "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
+        objPost,
+        { headers: { Authorization: `Bearer ${userD.token}` } }
+      );
+      promise.then(() => {
+        !props.create ? props.setCreate(true) : props.setCreate(false);
+        setHabit("");
+        setChosen([]);
+        props.GetHabits()
+      });
+      promise.catch((resp) => {
+        alert(resp.response.data.message);
+      });
+    }else{
+      alert("Escolha pelo menos um dia")
+    }
   }
   return (
     <CriacaoHabito display={props.create ? "flex" : "none"}>
@@ -49,6 +53,8 @@ export default function CriarHabito(props) {
             type="text"
             id="habit"
             value={habit}
+            minLength={5}
+            maxLength={20}
             required
             onChange={(e) => setHabit(e.target.value)}
             placeholder="nome do hábito"

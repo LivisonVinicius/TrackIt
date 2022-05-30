@@ -31,6 +31,7 @@ export default function CadastroForms (){
               type="password"
               id="senha"
               value={senha}
+              minLength={3}
               required
               onChange={(e) => setSenha(e.target.value)}
               placeholder="senha"  
@@ -39,6 +40,8 @@ export default function CadastroForms (){
               type="text"
               id="nome"
               value={name}
+              minLength={3}
+              maxLength={12}
               required
               onChange={(e) => setName(e.target.value)}
               placeholder="nome"

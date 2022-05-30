@@ -13,38 +13,45 @@ export default function ListaDeHabitos() {
   const [create, setCreate] = useState(false);
   const [habitos, setHabitos] = useState([]);
   function DeleteHabit(id) {
-    const promise = axios.delete(
-      `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,
+    const confirm = window.confirm("Quer deletar esse hábito");
+    if (confirm) {
+      const promise = axios.delete(
+        `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,
+        { headers: { Authorization: `Bearer ${userD.token}` } }
+      );
+      promise.then(() => GetHabits());
+    } else {
+      return;
+    }
+  }
+  function GetHabits() {
+    const promise = axios.get(
+      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
       { headers: { Authorization: `Bearer ${userD.token}` } }
     );
-    promise.then(()=>GetHabits())
-  }
-  function GetHabits(){
-    const confirm=Window.confirm("Quer deletar esse hábito")
-    if(confirm){
-      const promise = axios.get(
-      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
-      { headers: { Authorization: `Bearer ${userD.token}` } });
-      promise.then((resp) => {
-        setHabitos(resp.data);
-      });
-      promise.catch((resp) => {
-        alert(resp.response.data.message);
-      });
-    }
-    
+    promise.then((resp) => {
+      setHabitos(resp.data);
+    });
+    promise.catch((resp) => {
+      alert(resp.response.data.message);
+    });
   }
   useEffect(() => {
-    GetHabits()
+    GetHabits();
   }, []);
   const componentsHabitos = habitos.map((habito) => (
     <Habito>
       <p>{habito.name}</p>
       <DiasDaSemana days={habito.days} />
-      <img src={Group} onClick={()=>{DeleteHabit(habito.id)} }/>
+      <img
+        src={Group}
+        onClick={() => {
+          DeleteHabit(habito.id);
+        }}
+      />
     </Habito>
   ));
-  
+
   console.log(habitos);
   return (
     <Box>
@@ -54,7 +61,11 @@ export default function ListaDeHabitos() {
           +
         </div>
       </MeusHabitos>
-      <CriarHabito create={create} setCreate={setCreate} GetHabits={GetHabits} />
+      <CriarHabito
+        create={create}
+        setCreate={setCreate}
+        GetHabits={GetHabits}
+      />
       {habitos.length === 0 ? (
         <p>
           Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
@@ -74,7 +85,7 @@ const Box = styled.div`
   flex-direction: column;
   margin-top: 98px;
   align-items: center;
-  margin-bottom:100px;
+  margin-bottom: 100px;
   p {
     width: 338px;
     height: 74px;

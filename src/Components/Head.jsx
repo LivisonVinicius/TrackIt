@@ -26,6 +26,7 @@ const Header = styled.header`
   padding:20px;
   box-sizing:border-box;
   align-items:center;
+  z-index:1;
 h1{
     width: 97px;
 height: 49px;
