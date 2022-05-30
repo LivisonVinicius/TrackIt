@@ -15,7 +15,7 @@ export default function LoginForms (){
         event.preventDefault();
         const objPost={email:email,password:senha}
         const promise=axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",objPost);
-        promise.then((resp)=>{setUserD({token:resp.data.token,image:resp.data.image});navigate("/habitos")});
+        promise.then((resp)=>{setUserD({token:resp.data.token,image:resp.data.image});navigate("/hoje")});
         promise.catch((resp)=>{alert(resp.response.data.message)})
     }
 

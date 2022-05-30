@@ -6,36 +6,55 @@ import UserData from "./Contexts/UserData";
 import axios from "axios";
 import Group from "./Components/imgs/Group.svg";
 import DiasDaSemana from "./DiasDaSemana";
+import CriarHabito from "./CriarHabito";
 
 export default function ListaDeHabitos() {
   const { userD, setUserD } = useContext(UserData);
+  const [create, setCreate] = useState(false);
   const [habitos, setHabitos] = useState([]);
+  function DeleteHabit(id) {
+    const promise = axios.delete(
+      `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,
+      { headers: { Authorization: `Bearer ${userD.token}` } }
+    );
+    promise.then(()=>GetHabits())
+  }
+  function GetHabits(){
+    const confirm=Window.confirm("Quer deletar esse hábito")
+    if(confirm){
+      const promise = axios.get(
+      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
+      { headers: { Authorization: `Bearer ${userD.token}` } });
+      promise.then((resp) => {
+        setHabitos(resp.data);
+      });
+      promise.catch((resp) => {
+        alert(resp.response.data.message);
+      });
+    }
+    
+  }
+  useEffect(() => {
+    GetHabits()
+  }, []);
   const componentsHabitos = habitos.map((habito) => (
     <Habito>
       <p>{habito.name}</p>
       <DiasDaSemana days={habito.days} />
-      <img src={Group} />
+      <img src={Group} onClick={()=>{DeleteHabit(habito.id)} }/>
     </Habito>
   ));
-  useEffect(() => {
-    const promise = axios.get(
-      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
-      { headers: { Authorization: `Bearer ${userD.token}` } }
-    );
-    promise.then((resp) => {
-      setHabitos(resp.data);
-    });
-    promise.catch((resp) => {
-      alert(resp.response.data.message);
-    });
-  });
-
+  
+  console.log(habitos);
   return (
     <Box>
       <MeusHabitos>
         <p>Meus hábitos</p>
-        <div>+</div>
+        <div onClick={() => (!create ? setCreate(true) : setCreate(false))}>
+          +
+        </div>
       </MeusHabitos>
+      <CriarHabito create={create} setCreate={setCreate} GetHabits={GetHabits} />
       {habitos.length === 0 ? (
         <p>
           Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
@@ -48,18 +67,23 @@ export default function ListaDeHabitos() {
   );
 }
 
+//                                              CSS
 const Box = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-top: 98px;
   align-items: center;
+  margin-bottom:100px;
   p {
     width: 338px;
     height: 74px;
     font-size: 17.976px;
     line-height: 22px;
     color: #666666;
+  }
+  section {
+    display: flex;
   }
 `;
 const MeusHabitos = styled.div`
@@ -68,7 +92,7 @@ const MeusHabitos = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom:20px;
+  margin-bottom: 20px;
   p {
     width: 148px;
     height: 29px;
@@ -92,8 +116,18 @@ const Habito = styled.div`
   height: 91px;
   background: #ffffff;
   border-radius: 5px;
+  box-sizing: border-box;
+  position: relative;
+  padding-left: 15px;
+  margin-bottom: 10px;
   p {
     width: 300px;
     height: 25px;
+    margin-top: 15px;
+  }
+  img {
+    position: absolute;
+    right: 10px;
+    top: 10px;
   }
 `;

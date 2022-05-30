@@ -5,7 +5,6 @@ import UserData from "../Contexts/UserData";
 
 export default function Head() {
   const { userD } = useContext(UserData);
-  console.log(userD)
   return (
     <Header>
       <h1>TrackIt</h1>

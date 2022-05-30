@@ -13,8 +13,7 @@ export default function Cadastro(){
                 <P>Já tem uma conta? Faça login!</P>
             </Link>
         </Main>
-    )
-    
+    )   
 }
 
 const Logobox = styled.div`

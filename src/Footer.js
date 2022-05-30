@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
+  const navigate = useNavigate();
   return (
     <Foot>
-      <p>Hábitos</p>
-      <div></div>
+      <p onClick={()=>navigate("/habitos")}>Hábitos</p>
+      <div onClick={()=>navigate("/hoje")} >Hoje</div>
       <p>Histórico</p>
     </Foot>
   );

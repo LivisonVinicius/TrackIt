@@ -1,15 +1,15 @@
 import React from "react";
 import Head from "./Head";
 import Footer from "../Footer";
-import ListaDeHabitos from "../ListaDeHabitos";
 import styled , {createGlobalStyle} from "styled-components";
+import HojeComponents from "../HojeComponents";
 
-export default function Habitos (){
+export default function Hoje (){
     return (
         <Main>
             <GlobalStyle/>
             <Head/>
-            <ListaDeHabitos/>
+            <HojeComponents/>
             <Footer/>
         </Main>
     )
