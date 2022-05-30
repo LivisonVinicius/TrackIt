@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
@@ -9,7 +8,7 @@ export default function Footer() {
     <Foot>
       <p onClick={()=>navigate("/habitos")}>Hábitos</p>
       <div onClick={()=>navigate("/hoje")} >Hoje</div>
-      <p>Histórico</p>
+      <p onClick={()=>navigate("/historico")}>Histórico</p>
     </Foot>
   );
 }

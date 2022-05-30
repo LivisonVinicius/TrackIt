@@ -6,6 +6,7 @@ import Cadastro from "./Components/Cadastro";
 import UserData from "./Contexts/UserData";
 import Habitos from "./Components/Habitos";
 import Hoje from "./Components/Hoje";
+import Historico from "./Components/Historico";
 
 export default function App() {
   const [userD, setUserD] = useState([]);
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/habitos" element={<Habitos />} />
           <Route path="/hoje" element={<Hoje />} />
+          <Route path="/historico" element={<Historico />} />
         </Routes>
       </BrowserRouter>
     </UserData.Provider>

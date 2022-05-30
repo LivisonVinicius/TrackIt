@@ -23,20 +23,20 @@ const Header = styled.header`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: space-between;
-  padding:20px;
-  box-sizing:border-box;
-  align-items:center;
-  z-index:1;
-h1{
+  padding: 20px;
+  box-sizing: border-box;
+  align-items: center;
+  z-index: 1;
+  h1 {
     width: 97px;
-height: 49px;
-font-family: 'Playball';
-line-height: 49px;
-color: #FFFFFF;
-}
-img{
+    height: 49px;
+    font-family: "Playball";
+    line-height: 49px;
+    color: #ffffff;
+  }
+  img {
     width: 51px;
-height: 51px;
-border-radius: 98.5px;
-}
+    height: 51px;
+    border-radius: 98.5px;
+  }
 `;
