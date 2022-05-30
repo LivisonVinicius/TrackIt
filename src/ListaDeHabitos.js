@@ -9,7 +9,7 @@ import DiasDaSemana from "./DiasDaSemana";
 import CriarHabito from "./CriarHabito";
 
 export default function ListaDeHabitos() {
-  const { userD, setUserD } = useContext(UserData);
+  const { userD } = useContext(UserData);
   const [create, setCreate] = useState(false);
   const [habitos, setHabitos] = useState([]);
   function DeleteHabit(id) {
@@ -51,8 +51,6 @@ export default function ListaDeHabitos() {
       />
     </Habito>
   ));
-
-  console.log(habitos);
   return (
     <Box>
       <MeusHabitos>
