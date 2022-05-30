@@ -8,7 +8,7 @@ export default function Head() {
   return (
     <Header>
       <h1>TrackIt</h1>
-      <img src={userD.image} alt="ProfilePic" />
+      <img src={userD.image} />
     </Header>
   );
 }
@@ -23,9 +23,9 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  box-sizing: border-box;
   align-items: center;
   z-index: 1;
+  left:0px;
   h1 {
     width: 97px;
     height: 49px;

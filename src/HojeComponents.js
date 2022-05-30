@@ -112,12 +112,12 @@ const Top = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
-  margin-bottom:28px;
+  padding-left: 20px;
+  padding-bottom:28px;
   box-sizing: border-box;
   h2 {
     font-family: "Lexend Deca";
-    width: 340px;
+    width: 100%;
     height: 29px;
     font-size: 22.976px;
     line-height: 29px;
@@ -141,8 +141,7 @@ const HabitsBox = styled.section`
   box-sizing: border-box;
 `;
 const Habito = styled.div`
-  width: 100%;
-  width: 340px;
+  width: 90%;
   height: 94px;
   background: #ffffff;
   border-radius: 5px;
@@ -162,7 +161,7 @@ const Habito = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 28px;
+    right: 14px;
     bottom: 10px;
     box-sizing: border-box;
   }
@@ -173,6 +172,7 @@ const Habito = styled.div`
     margin:15px 0px 7px 15px;
     width: 240px;
     height: 25px;
+    word-wrap:break-word;
     color: ${(props) => props.color};
   }
   h4 {

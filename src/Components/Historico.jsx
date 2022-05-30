@@ -43,7 +43,7 @@ const HistoricoComponents = styled.div`
     color: #126ba5;
   }
   h2 {
-    width: 338px;
+    width: 90%;
     height: 74px;
     font-size: 17.976px;
     line-height: 22px;

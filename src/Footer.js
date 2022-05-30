@@ -32,6 +32,7 @@ const Foot = styled.footer`
   justify-content: space-around;
   position: fixed;
   bottom: 0px;
+  right:0px;
   align-items:center;
   box-sizing: border-box;
   p {

@@ -84,8 +84,9 @@ const Box = styled.div`
   margin-top: 98px;
   align-items: center;
   margin-bottom: 100px;
+  padding:0px 17px 0px 17px;
   p {
-    width: 338px;
+    width: 100%;
     height: 74px;
     font-size: 17.976px;
     line-height: 22px;
@@ -96,14 +97,14 @@ const Box = styled.div`
   }
 `;
 const MeusHabitos = styled.div`
-  width: 340px;
+  width: 100%;
   height: 36px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   p {
-    width: 148px;
+    width: 100%;
     height: 29px;
     font-size: 22.976px;
     line-height: 29px;
@@ -121,7 +122,7 @@ const MeusHabitos = styled.div`
   }
 `;
 const Habito = styled.div`
-  width: 340px;
+  width: 95%;
   height: 91px;
   background: #ffffff;
   border-radius: 5px;
@@ -130,7 +131,7 @@ const Habito = styled.div`
   padding-left: 15px;
   margin-bottom: 10px;
   p {
-    width: 300px;
+    width: 90%;
     height: 25px;
     margin-top: 15px;
   }
